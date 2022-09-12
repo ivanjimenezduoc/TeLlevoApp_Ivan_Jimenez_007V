@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar class="barramenu">
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-back-button mode="ios" text="Volver"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="titulo centrar">TeLlevoApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-list>
+      <ion-item lines="none">
+        <ion-label position="stacked">Marca</ion-label>
+        <ion-select placeholder="Seleccione la marca">
+          <ion-select-option value="auto1">ALFA ROMEO</ion-select-option>
+          <ion-select-option value="auto2">AUDI</ion-select-option>
+          <ion-select-option value="auto3">BAIC</ion-select-option>
+          <ion-select-option value="auto4">BMW</ion-select-option>
+          <ion-select-option value="auto5">BRILLIANCE</ion-select-option>
+          <ion-select-option value="auto6">CHANGAN</ion-select-option>
+          <ion-select-option value="auto7">CHERY</ion-select-option>
+          <ion-select-option value="auto8">CHEVROLET</ion-select-option>
+          <ion-select-option value="auto9">CHRYSLER</ion-select-option>
+          <ion-select-option value="auto10">CITROËN</ion-select-option>
+          <ion-select-option value="auto11">DFM</ion-select-option>
+          <ion-select-option value="auto12">DFSK</ion-select-option>
+          <ion-select-option value="auto13">DODGE</ion-select-option>
+          <ion-select-option value="auto15">FAW</ion-select-option>
+          <ion-select-option value="auto17">FERRARI</ion-select-option>
+          <ion-select-option value="auto16">FIAT</ion-select-option>
+          <ion-select-option value="auto17">FORD</ion-select-option>
+          <ion-select-option value="auto18">FOTON</ion-select-option>
+          <ion-select-option value="auto19">GEELY</ion-select-option>
+          <ion-select-option value="auto20">GREAT WALL</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-item>
+      <ion-label position="stacked">Modelo</ion-label>
+      <ion-input placeholder="Ingrese modelo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Patente</ion-label>
+      <ion-input placeholder="AABB00 o AB1234"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Color</ion-label>
+      <ion-input placeholder="Escriba el color"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Tarifa ($/Km)</ion-label>
+      <ion-input
+        placeholder="Ingrese un monto por Km"
+        type="number"
+      ></ion-input>
+    </ion-item>
+    <div style="padding-top: 15px; text-align: center">
+      <ion-button
+        (click)="onClick()"
+        with="100px"
+        shape="round"
+        fill="solid"
+        size="small"
+        color="primary"
+        routerLink="/perfil-conductor"
+      >
+        Guardar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer style="height:50px ;">
+  <ion-toolbar >
+    <div name="logo" style="margin-left:5px ;" >
+      <img  src="assets/logo_duoc.png" whith="20px" height="20px" >
+    </div>
+    <ion-title class="pie">Powered by Ivan</ion-title>
+  </ion-toolbar>
+</ion-footer>

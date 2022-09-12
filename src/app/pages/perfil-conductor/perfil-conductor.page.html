@@ -1,0 +1,219 @@
+<ion-header>
+  <ion-toolbar class="barramenu">
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-back-button mode="ios" text="Volver"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="titulo centrar">TeLevoApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <img class="centrar" src="assets/foto.png" whith="80px" height="80px" />
+
+  </ion-row>
+
+  <ion-row>
+    <ion-card>
+     
+        <ion-row>
+          <ion-col style="text-align:center ;"  size=12>
+            <p style="font-size: 15px">Manolo Sepulveda </p>
+            <p style="font-size: 15px">Ingenieria en Informatica</p>
+            <p style="font-size: 15px">Sede Maipu</p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="boton-fila-der">
+          <ion-col size=12>
+          <ion-button
+            (click)="onClick()"
+            with="10px"
+            shape="round"
+            fill="solid"
+            color="primary"
+            size="small"
+            routerLink="/registro"
+          >
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        </ion-row>
+ 
+    </ion-card>
+  </ion-row>
+
+  <div name="Vehiculos" class="centrar">
+    <ion-list>
+      <ion-row>
+        <ion-col size="8">
+          <ion-list-header> Mis Vehiculos </ion-list-header>
+        </ion-col>
+        <ion-col size="4">
+          <a routerLink="/new-vehiculo" routerDirection="forward">
+            <img src="assets/icon/plus.png" whith="40px" height="40px" />
+          </a>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-icon name="car-outline"></ion-icon>
+        <!--<ion-avatar slot="start">
+    <img src="./avatar-finn.png" />
+    </ion-avatar>-->
+        <ion-label>
+          <h2>Gelly Lc 1.0</h2>
+          <h3>Rojo Italiano</h3>
+        </ion-label>
+
+        <ion-button
+          (click)="onClick()"
+          with="10px"
+          shape="round"
+          fill="solid"
+          color="danger"
+        >
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="car-outline"></ion-icon>
+        <!--<ion-avatar slot="start">
+    <img src="./avatar-finn.png" />
+    </ion-avatar>-->
+        <ion-label>
+          <h2>Lamborghini Diablo</h2>
+          <h3>Rojo Italiano</h3>
+        </ion-label>
+
+        <ion-button
+          (click)="onClick()"
+          with="10px"
+          shape="round"
+          fill="solid"
+          color="danger"
+        >
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div style="padding-top: 15px">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Datos de transferencia</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div name="listado bancos">
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label position="stacked">Banco</ion-label>
+              <ion-select placeholder="Seleccione el Banco">
+                <ion-select-option value="banco1"
+                  >Banco de Chile</ion-select-option
+                >
+                <ion-select-option value="banco1"
+                  >Banco Estado
+                </ion-select-option>
+                <ion-select-option value="banco2"
+                  >Banco Santander
+                </ion-select-option>
+                <ion-select-option value="banco3">
+                  Banco BICE
+                </ion-select-option>
+                <ion-select-option value="banco4"
+                  >Banco Condell
+                </ion-select-option>
+                <ion-select-option value="banco5"
+                  >Banco CrediChile
+                </ion-select-option>
+                <ion-select-option value="banco6"
+                  >Banco Edwards Citi
+                </ion-select-option>
+                <ion-select-option value="banco7"
+                  >Banco Falabella
+                </ion-select-option>
+                <ion-select-option value="banco8"
+                  >Banco Internacional
+                </ion-select-option>
+                <ion-select-option value="banco9"
+                  >Banco Itaú
+                </ion-select-option>
+                <ion-select-option value="banco10"
+                  >Banco Ripley
+                </ion-select-option>
+                <ion-select-option value="banco11"
+                  >Banco Security
+                </ion-select-option>
+                <ion-select-option value="banco12"
+                  >Scotiabank
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+          <ion-list>
+            <ion-item lines="none">
+              <ion-label position="stacked">Tipo de cuenta</ion-label>
+              <ion-select placeholder="Seleccione tipo de cuenta">
+                <ion-select-option value="tipo1"
+                  >Cuenta Vista
+                </ion-select-option>
+                <ion-select-option value="tipo2">
+                  Cuenta Corriente
+                </ion-select-option>
+                <ion-select-option value="tipo3">
+                  Cuenta de Ahorro
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Numero de Cuenta</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Correo</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+
+
+        <div style="padding-top: 15px">
+          <ion-row class="boton-fila-der">
+            <ion-button
+              (click)="onClick()"
+              with="100px"
+              shape="round"
+              fill="solid"
+              color="primary"
+              size="small"
+            >
+              Actualizar Datos
+            </ion-button>
+          </ion-row>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer style="height: 50px">
+  <ion-toolbar>
+    <div name="logo" style="margin-left: 5px">
+      <img src="assets/logo_duoc.png" whith="20px" height="20px" />
+    </div>
+    <ion-title class="pie">Powered by Ivan</ion-title>
+  </ion-toolbar>
+</ion-footer>

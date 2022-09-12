@@ -1,0 +1,202 @@
+<ion-header>
+  <ion-toolbar class="barramenu">
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-back-button mode="ios" text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="titulo centrar">TeLlevoAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <h1 style="text-align:center ;">Preguntas frecuentes</h1>
+  <ion-accordion-group>
+    <ion-accordion value="first">
+      <ion-item slot="header" color="light">
+        <ion-label>Planificar viaje</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item>
+          <img
+            src="assets/icon/reloj.png"
+            height="30px"
+            style="padding-right: 10px"
+          />
+          <p>Selecciona la hora de salida de tu viaje</p>
+        </ion-item>
+        <ion-item>
+          <img
+            src="assets/icon/pasajero.png"
+            height="30px "
+            style="padding-right: 10px"
+          />
+          <p>
+            Selecciona la cantidad de pasajeros que puedes llevar en el viaje
+          </p>
+        </ion-item>
+        <ion-item>
+          <p>
+            <u><span class="bolded">Observaciones :</span></u> Indica algun dato
+            importante a considerar, por ejemplo donde se juntaran pára comenzar
+            el viaje
+          </p>
+        </ion-item>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="second">
+      <ion-item slot="header" color="light">
+        <ion-label>Ruta Actual</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item>
+          <ion-button
+          style="padding-right: 10px">
+            <ion-icon name="person"></ion-icon>
+            <ion-badge color="secondary">2</ion-badge>
+          </ion-button>
+          <p>
+            Pudes ver las solicitudes y aceptar nuevos pasajeros , el numero
+            indica cuantas solicitudes estan pendientes
+          </p>
+        </ion-item>
+        <ion-item>
+          <ion-button
+            style="padding-right: 10px"
+            (click)="onClick()"
+            with="10px"
+            shape="round"
+            fill="solid"
+            color="primary"
+          >
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </ion-button>
+          <p>Confirma que el pasajero a llegado, cuando ya estes en ruta, con este boton podras confirmar que el pasajero llego a su destino</p>
+        </ion-item>
+        <ion-item>
+          <ion-button
+            (click)="onClick()"
+            with="10px"
+            shape="round"
+            fill="solid"
+            color="success"
+            style="padding-right: 10px"
+          >
+            <ion-icon name="chatbubble-outline"></ion-icon>
+          </ion-button>
+          <p>Puedes enviarle un mensaje al pasajero</p>
+        </ion-item>
+        <ion-item>
+          <p>
+            <u
+              ><span class="bolded">
+                <ion-icon
+                  style="color: green"
+                  name="caret-back-outline"
+                ></ion-icon>
+
+                Iniciamos?
+
+                <ion-icon
+                  style="color: red"
+                  name="caret-forward-outline"
+                ></ion-icon></span
+            ></u>
+
+            Puedes iniciar o cancelar el viaje, deslizando el boton hacia un
+            lado u otro
+          </p>
+        </ion-item>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="third">
+      <ion-item slot="header" color="light">
+        <ion-label>Ver Solicitudes</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-item>
+          <ion-button
+            (click)="onClick()"
+            with="10px"
+            shape="round"
+            fill="solid"
+            color="primary"
+            style="padding-right: 10px"
+          >
+            <ion-icon name="location-outline"></ion-icon>
+          </ion-button>
+          <p> Puedes ver el destino del pasajero y tu ruta actualizada en el mapa antes de aceptar el viaje</p>
+        </ion-item>
+        <ion-item>
+          <ion-button
+            (click)="onClick()"
+            with="10px"
+            shape="round"
+            fill="solid"
+            color="success"
+            style="padding-right: 10px"
+          >
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+          </ion-button>
+          <p> Puedes aceptar el viaje de este pasajero, l oque modificara tu ruta actual</p>
+        </ion-item>
+      </div>
+    </ion-accordion>
+    <ion-accordion value="cuarto">
+      <ion-item slot="header" color="light">
+
+        <ion-label>Perfil</ion-label>
+      </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-item>
+            <ion-button
+            (click)="onClick()"
+            with="10px"
+            shape="round"
+            fill="solid"
+            color="primary"
+            size="small"
+            style="padding-right: 10px"
+            
+          >
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+            <p> Puedes editar tus datos asi como actualizar tu contraseña</p>
+          </ion-item>
+          <ion-item>
+            <img  style="padding-right: 10px" src="assets/icon/plus.png" whith="40px" height="40px" />
+            <p> Puedes agregar un nuevo auto a tu lista de  vehiculos</p>
+          </ion-item>
+          <ion-item>
+            <ion-button
+          (click)="onClick()"
+          with="10px"
+          shape="round"
+          fill="solid"
+          color="danger"
+          style="padding-right: 10px"
+        >
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+        <p> Puedes eliminar el auto seleccionado de tu lista</p>
+
+          </ion-item>
+          
+        
+        </div>
+    </ion-accordion>
+  </ion-accordion-group>
+</ion-content>
+<ion-footer style="height: 50px">
+  <ion-toolbar>
+    <div name="logo" style="margin-left: 5px">
+      <img src="assets/logo_duoc.png" whith="20px" height="20px" />
+    </div>
+    <ion-title class="pie">Powered by Ivan</ion-title>
+  </ion-toolbar>
+</ion-footer>

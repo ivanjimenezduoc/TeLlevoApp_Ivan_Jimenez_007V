@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar class="barramenu">
+   
+
+    <ion-buttons slot="start">
+      <ion-back-button mode ="ios" text="Volver"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="titulo centrar">TeLlevoApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input placeholder="Ingrese su nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Rut</ion-label>
+        <ion-input placeholder="12345678-9"></ion-input>
+      </ion-item>
+
+    
+
+      <ion-item >
+        <ion-label position="stacked">Sede</ion-label>
+        <ion-select placeholder="Selecciona tu Sede">
+          <ion-select-option value="sede1">Sede Alameda</ion-select-option>
+          <ion-select-option value="sede2">Sede Antonio Varas</ion-select-option>
+          <ion-select-option value="sede3">Sede Educación Continua</ion-select-option>
+          <ion-select-option value="sede4">Sede Maipú</ion-select-option>
+          <ion-select-option value="sede5">Sede Melipilla</ion-select-option>
+          <ion-select-option value="sede6">Sede Padre Alonso de Ovalle</ion-select-option>
+          <ion-select-option value="sede7">Sede Plaza Norte</ion-select-option>
+          <ion-select-option value="sede8">Sede Plaza Oeste</ion-select-option>
+          <ion-select-option value="sede9">Sede Plaza Vespucio</ion-select-option>
+          <ion-select-option value="sede10">Sede Puente Alto</ion-select-option>
+          <ion-select-option value="sede11">Sede San Bernardo</ion-select-option>
+          <ion-select-option value="sede12">Sede San Carlos de Apoquindo</ion-select-option>
+          <ion-select-option value="sede13">Sede San Joaquín</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+      <ion-item >
+        <ion-label position="stacked">Carrera</ion-label>
+        <ion-select placeholder="Selecciona tu carrera">
+          <ion-select-option value="carrera1">Administración de Infraestructura y Plataformas Tecnológicas</ion-select-option>
+          <ion-select-option value="carrera2">Analista Programador Computacional</ion-select-option>
+          <ion-select-option value="carrera3">Administración de Redes y Telecomunicaciones</ion-select-option>
+          <ion-select-option value="carrera4">Ingeniería en Infraestructura y Plataformas Tecnológicas</ion-select-option>
+          <ion-select-option value="carrera5">Ingeniería en Informática</ion-select-option>
+          <ion-select-option value="carrera6">cIngeniería en Conectividad y Redes</ion-select-option>
+
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input type="password" placeholder="Ingrese su contraseña"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label position="stacked">Confirme Contraseña</ion-label>
+        <ion-input type="password" placeholder="Reingrese tu contraseña"></ion-input>
+      </ion-item>
+    </ion-list>
+
+  
+
+
+
+    
+    <div style="padding-top: 15px; text-align: center">
+      <ion-button
+        (click)="onClick()"
+        with="100px"
+        shape="round"
+        fill="solid"
+        size="small"
+        routerLink="/login"
+      >
+       Guardar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer style="height:50px ;">
+  <ion-toolbar >
+    <div name="logo" style="margin-left:5px ;" >
+      <img  src="assets/logo_duoc.png" whith="20px" height="20px" >
+    </div>
+    <ion-title class="pie">Powered by Ivan</ion-title>
+  </ion-toolbar>
+</ion-footer>

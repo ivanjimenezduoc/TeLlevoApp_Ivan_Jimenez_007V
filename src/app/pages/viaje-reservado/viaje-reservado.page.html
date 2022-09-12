@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar class="barramenu">
+    <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="titulo centrar">TeLlevoAPP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div name="mapa">
+    <img src="assets/map.jpg" class="mapa" />
+  </div>
+
+  <div>
+    <ion-list>
+      <ion-list-header> Datos Conductor</ion-list-header>
+
+      <ion-item>
+        <ion-avatar slot="end">
+          <img src="assets/foto.png" />
+        </ion-avatar>
+        <ion-label>
+          <h3>Conductor : Juanito Perez</h3>
+          <h3>Vehiculo :Gelly Lc 1.0</h3>
+          <h3>Patente :HRHY99</h3>
+          <h3>Hora Salida : 22:20</h3>
+          <h3>Color : Rojo Italiano</h3>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div>
+    <ion-list>
+
+
+      <ion-item>
+        <ion-avatar class="avatar-cuadrado" slot="start">
+          <img src="assets/ruta.png" />
+        </ion-avatar>
+        <ion-label>
+          <h1 style="padding-bottom: 10px">Tu Viaje</h1>
+          <h3>Las Naciones 4569, Maipu</h3>
+          <h3>Tarifa :$ 5000</h3>
+          <ion-label>
+            Medio de pago: Efectivo <ion-icon name="cash-outline"></ion-icon
+          ></ion-label>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+  <div name="boton aceptar" style="height: 50px">
+    <ion-row>
+      <ion-col size="12">
+        <div style="text-align: center">
+          <ion-button
+            (click)="onClick()"
+            with="100px"
+            shape="round"
+            fill="solid"
+            color="danger"
+            size="small"
+            routerLink="/buscar-viaje"
+          >
+            Cancelar Viaje
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <ion-footer style="height: 50px">
+    <ion-toolbar>
+      <div name="logo" style="margin-left: 5px">
+        <img src="assets/logo_duoc.png" whith="20px" height="20px" />
+      </div>
+      <ion-title class="pie">Powered by Ivan</ion-title>
+    </ion-toolbar>
+  </ion-footer></ion-content
+>

@@ -1,0 +1,46 @@
+<ion-app>
+  
+ 
+  <ion-menu contentId="main" menuId="first" side="end">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Menú</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+
+
+        <div *ngIf="conductor; else pasajero">
+          <ion-menu-toggle *ngFor="let c of componentes">
+            <ion-item [routerLink]="c.redirecTo">
+              <ion-icon [name]="c.icon" slot="start" color="primary"></ion-icon>
+              {{ c.name }}
+           </ion-item>
+          </ion-menu-toggle>
+        </div>
+
+
+        
+        <ng-template #pasajero>
+          
+          <ion-menu-toggle *ngFor="let c of componentes2">
+            <ion-item [routerLink]="c.redirecTo"
+                detail=true>
+              <ion-icon [name]="c.icon" slot="start" color="primary"></ion-icon>
+              {{ c.name }}
+           </ion-item>
+          </ion-menu-toggle>
+
+        </ng-template>
+
+     
+     </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
+
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>
+
