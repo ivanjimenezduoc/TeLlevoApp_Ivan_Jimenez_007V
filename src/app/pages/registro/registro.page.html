@@ -1,9 +1,7 @@
 <ion-header>
   <ion-toolbar class="barramenu">
-   
-
     <ion-buttons slot="start">
-      <ion-back-button mode ="ios" text="Volver"></ion-back-button>
+      <ion-back-button mode="ios" text="Volver"></ion-back-button>
     </ion-buttons>
 
     <ion-title class="titulo centrar">TeLlevoApp</ion-title>
@@ -12,13 +10,44 @@
 
 <ion-content>
   <div>
-    <ion-list>
-
+    <form [formGroup]="formularioRegistro" (keyup.enter)="CrearUsuario()">
       <ion-item>
         <ion-label position="stacked">Nombre</ion-label>
-        <ion-input placeholder="Ingrese su nombre"></ion-input>
+        <ion-input
+          type="text"
+          formControlName="nombre"
+          placeholder="Ingrese su nombre"
+        ></ion-input>
       </ion-item>
 
+      <ion-item>
+        <ion-label position="stacked">Correo</ion-label>
+        <ion-input
+          type="email"
+          formControlName="correo"
+          placeholder="Ingrese su Correo"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Contraseña</ion-label>
+        <ion-input
+          type="password"
+          placeholder="Ingrese su contraseña"
+          formControlName="password"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Confirme Contraseña</ion-label>
+        <ion-input
+          type="password"
+          placeholder="Reingrese tu contraseña"
+          formControlName="confirmaPass"
+        ></ion-input>
+      </ion-item>
+    </form>
+    <!--
       <ion-item>
         <ion-label position="stacked">Rut</ion-label>
         <ion-input placeholder="12345678-9"></ion-input>
@@ -58,43 +87,27 @@
 
         </ion-select>
       </ion-item>
+      -->
 
-
-      <ion-item>
-        <ion-label position="stacked">Contraseña</ion-label>
-        <ion-input type="password" placeholder="Ingrese su contraseña"></ion-input>
-      </ion-item>
-  
-      <ion-item>
-        <ion-label position="stacked">Confirme Contraseña</ion-label>
-        <ion-input type="password" placeholder="Reingrese tu contraseña"></ion-input>
-      </ion-item>
-    </ion-list>
-
-  
-
-
-
-    
     <div style="padding-top: 15px; text-align: center">
       <ion-button
-        (click)="onClick()"
+        (click)="CrearUsuario()"
         with="100px"
         shape="round"
         fill="solid"
         size="small"
         routerLink="/login"
       >
-       Guardar
+        Guardar
       </ion-button>
     </div>
   </div>
 </ion-content>
 
-<ion-footer style="height:50px ;">
-  <ion-toolbar >
-    <div name="logo" style="margin-left:5px ;" >
-      <img  src="assets/logo_duoc.png" whith="20px" height="20px" >
+<ion-footer style="height: 50px">
+  <ion-toolbar>
+    <div name="logo" style="margin-left: 5px">
+      <img src="assets/logo_duoc.png" whith="20px" height="20px" />
     </div>
     <ion-title class="pie">Powered by Ivan</ion-title>
   </ion-toolbar>

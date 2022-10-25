@@ -32,7 +32,11 @@ export class AppComponent {
       name: 'Buscar Viajes',
       redirecTo: '/buscar-viaje'
     },
-
+    {
+      icon: 'newspaper-outline',
+      name: 'Noticias',
+      redirecTo: '/noticias'
+    },
     {
       icon: 'navigate-outline',
       name: 'Mis Viajes Pasajero',
@@ -43,23 +47,17 @@ export class AppComponent {
       name: 'Preguntas frecuentes',
       redirecTo: '/faq'
     },
-    {
-      icon: 'log-out-outline',
-      name: 'Cerrar Sesion',
-      redirecTo: '/login'
-    },
+
   ];
   
-  componentes2 : Componente[] = [
-    {
-      
-      icon: 'person-outline',
-      name: 'opciones 2',
-      redirecTo: '/login'
-    },
-  ];
 
-  conductor = true;  
+logout(){
+
+localStorage.clear();
+
+
+}
+
 
 
 }

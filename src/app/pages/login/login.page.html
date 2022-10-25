@@ -1,91 +1,90 @@
 <ion-header>
   <ion-toolbar mode="ios" class="barramenu">
-    <ion-title class="titulo centrar" >login</ion-title>
+    <ion-title class="titulo centrar">login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
- <div name="logo" class="centrar"  >
-    <img  src="assets/logo_auto.png" whith="100px" height="100px" class="ion-padding">
+  <div name="logo" class="centrar">
+    <img
+      src="assets/logo_auto.png"
+      whith="100px"
+      height="100px"
+      class="ion-padding"
+    />
   </div>
-  
-  <h1 style="text-align: center ; color: rgb(0, 0, 110); font-size:xx-large;">TeLlevoAPP</h1>
-  
 
-  <div class="centrar" name="campos"   style=" text-align:center;  ">
-    
-<div style="padding-top: 10px ;">
-    <ion-label position="stacked">Correo Usuario</ion-label>
+  <h1 style="text-align: center; color: rgb(0, 0, 110); font-size: xx-large">
+    TeLlevoAPP
+  </h1>
 
-    <ion-input
+      <form [formGroup]="formularioLogin">
+        <p style="text-align:center ;">Correo Usuario</p>
+        <ion-item no-lines>
+          <!--<ion-label position="stacked">Correo Usuario</ion-label>-->
+          
+          <ion-input
+
+            class="input-field"
+            style="text-align: center"
+            placeholder="Ingresa tu correo"
+            type="email"
+            formControlName="correo"
+          ></ion-input>
+        </ion-item>
+        <p style="text-align:center ;">Contraseña</p>
+        <ion-item no-lines>
+          
+
+          <ion-input
+            class="input-field"
+            style="text-align: center"
+            type="password"
+            placeholder="Ingresa tu contraseña"
+            formControlName="password"
+          ></ion-input>
+        </ion-item>
+      </form>
+      <br />
+
+    <ion-segment mode ="ios" color="secondary" >
       
-      class="input-field "
-      style="text-align: center;"
-      type="text"
-      placeholder="Ingresa tu correo"
-      
-    ></ion-input>
-  </div>
-
-  <div style="padding-top: 10px ;">
-
-    <ion-label position="stacked">Contraseña</ion-label>
-
-    <ion-input
-     
-      class="input-field"
-      style="text-align: center"
-      type="password"
-      placeholder="Ingresa tu contraseña"
-    ></ion-input>
-  </div>
-
-</div>
-
-  <div name="tipo" style="padding-top: 20px;text-align: center;">
-    
-
-    <ion-segment mode ="ios" color="secondary">
-      <ion-segment-button value="pasajero">
+      <ion-segment-button value="pasajero" (click)="set_user('pasajero')">
         <ion-label>Pasajero</ion-label>
         <ion-icon name="man"></ion-icon>
       </ion-segment-button>
-      <ion-segment-button value="conductor">
+
+      <ion-segment-button value="conductor" (click)="set_user('conductor')">
         <ion-label>Conductor</ion-label>
         <ion-icon name="car"></ion-icon>
       </ion-segment-button>
       
     </ion-segment>
+      <ion-button
+        (click)="Ingresar()"
+        expand="block"
+        shape="round"
+        with="100px"
+        fill="solid"
+        color="primary"
+        
+      >
+        Ingresar
+      </ion-button>
 
+      <ion-button 
+      (click)="onClick()" 
+      expand="block" 
+      fill="clear" 
+      shape="round" 
+      routerLink="/registro">
+       Registrarse
+      </ion-button>
 
-  </div>
+   
 
-  <div name="boton" style="padding-top: 20px;text-align: center;">
-    <ion-button
-    
-      (click)="onClick()"
-      with="100px"
-      shape="round"
-      fill="solid"
-      color="primary"
-      routerLink="/plan-viaje"
-    >
-      Ingresar
-    </ion-button>
-  </div>
-  <div>
-
-    <ion-button 
-    (click)="onClick()" 
-    expand="block" 
-    fill="clear" 
-    shape="round" 
-    routerLink="/registro">
-     Crear Usuario
-    </ion-button>
-
-  </div>
 </ion-content>
+
 <ion-footer mode="ios" style="height:50px ;">
   <ion-toolbar >
     <div name="logo" style="margin-left:5px ;" >
