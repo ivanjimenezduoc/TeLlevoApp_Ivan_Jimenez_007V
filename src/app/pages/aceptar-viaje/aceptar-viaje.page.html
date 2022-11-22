@@ -1,7 +1,5 @@
 <ion-header>
   <ion-toolbar class="barramenu">
-
-    
     <ion-buttons slot="end">
       <ion-button (click)="mostrarMenu()" color="primary">
         <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
@@ -9,34 +7,62 @@
     </ion-buttons>
 
     <ion-buttons slot="start">
-      <ion-back-button  mode="ios" text="Volver"></ion-back-button>
+      <ion-back-button mode="ios" text="Volver"></ion-back-button>
     </ion-buttons>
     <ion-title class="titulo centrar">TeLlevoAPP</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
-  <p style="text-align:center;font-size:25px ">Solicitudes</p>
-  <div name="mapa" >
-    <img
-      src="assets/map.jpg"
-      
-      class=" mapa"
-    />
-  </div>
+  <p style="text-align: center; font-size: 25px">Solicitudes</p>
+  <div id="map"></div>
   <div name="solicitudes">
+    <ion-list>
+      <ion-list-header> Viajes Disponibles </ion-list-header>
+      <ion-card *ngFor="let c of ruta">
+        
+        <ion-card-content *ngIf="c.estado=='pendiente'">
+          <h4>Destino : {{ c.destino }}</h4>
+          <p>Pasajero : {{ c.usuario }}</p>
+          <p>Hora : {{c.hora | date:'HH:mm'}}</p>
 
+          <ion-row>
+            <ion-col size="6">
+              <ion-button
+                (click)="calculateAndDisplayRoute(c.destino)"
+                with="10px"
+                shape="round"
+                fill="solid"
+                color="primary"
+                size="small"
+              >
+                <ion-icon name="location-outline"></ion-icon>Ver
+              </ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-button
+                (click)="aceptarRuta( c.correoUsuario ,c.destino )"
+                with="10px"
+                shape="round"
+                fill="solid"
+                color="success"
+                size="small"
+                routerLink="/ruta-actual"
+              >
+                <ion-icon name="checkmark-circle-outline"></ion-icon>OK
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-list>
 
-       <div>
-        <ion-list>
+    <div>
+      <!--<ion-list>
           <ion-list-header> Solicitudes pendientes</ion-list-header>
           
           <ion-item>
             <ion-icon name="person-circle-outline"></ion-icon>
-            <!--<ion-avatar slot="start">
-              <img src="./avatar-finn.png" />
-            </ion-avatar>-->
             <ion-label>
               <h2>Juanito Perez</h2>
               <h3>Las Naciones 4569, Maipu</h3>
@@ -63,9 +89,7 @@
 
           </ion-item>
           <ion-item>
-            <!--<ion-avatar slot="start">
-              <img src="./avatar-finn.png" />
-            </ion-avatar>-->
+           
             <ion-icon name="person-circle-outline"></ion-icon>
             <ion-label>
               <h2>Juanito Perez</h2>
@@ -94,22 +118,15 @@
           </ion-item>
 
          
-        </ion-list>
-
-
-       </div>
-
-
-
-     </div>
-
-
+        </ion-list>-->
+    </div>
+  </div>
 </ion-content>
 
-<ion-footer style="height:50px ;">
-  <ion-toolbar >
-    <div name="logo" style="margin-left:5px ;" >
-      <img  src="assets/logo_duoc.png" whith="20px" height="20px" >
+<ion-footer style="height: 50px">
+  <ion-toolbar>
+    <div name="logo" style="margin-left: 5px">
+      <img src="assets/logo_duoc.png" whith="20px" height="20px" />
     </div>
     <ion-title class="pie">Powered by Ivan</ion-title>
   </ion-toolbar>

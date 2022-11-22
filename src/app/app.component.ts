@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 interface Componente{
   icon:string;
   name:string;
@@ -12,20 +13,20 @@ interface Componente{
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
 
+
+
+  constructor() {}
+  
+  public pasajero_=false;
+  
 
   componentes : Componente[] = [
     {
       
       icon: 'person-outline',
       name: 'Mi Perfil',
-      redirecTo: '/perfil-conductor'
-    },
-    {
-      icon: 'navigate-outline',
-      name: 'Mis Recorridos',
-      redirecTo: '/mis-viajes'
+      redirecTo: '/perfil-pasajero'
     },
     {
       icon: 'search-circle-outline',
@@ -49,14 +50,41 @@ export class AppComponent {
     },
 
   ];
-  
 
+  componentes2 : Componente[] = [
+    {
+      
+      icon: 'person-outline',
+      name: 'Mi Perfil',
+      redirecTo: '/perfil-conductor'
+    },
+    {
+      icon: 'search-circle-outline',
+      name: 'Mis Recorridos',
+      redirecTo: '/mis-viajes'
+    },
+    {
+      icon: 'newspaper-outline',
+      name: 'Noticias',
+      redirecTo: '/noticias'
+    },
+    {
+      icon: 'help-circle-outline',
+      name: 'Preguntas frecuentes',
+      redirecTo: '/faq'
+    },
+
+  ];
+
+
+  
+/*
 logout(){
 
 localStorage.clear();
 
+}*/
 
-}
 
 
 

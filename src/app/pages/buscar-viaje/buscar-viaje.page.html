@@ -15,21 +15,32 @@
 </ion-header>
 
 <ion-content>
-  <div name="mapa" >
-  <img
-      src="assets/map.jpg"
-      
-      class=" mapa"
-    />
-    
-  </div>
+  <div id="map"></div>
 
   <div name="disponibles">
     <div>
       <ion-list>
         <ion-list-header> Viajes Disponibles </ion-list-header>
+        <ion-card *ngFor="let c of ruta">
+          <ion-card-content>
+            <h4>{{ c.destino }}</h4>
+            <p>{{ c.usuario }}</p>
+            <p>{{ c.hora }}</p>
+            <ion-button
+            (click)="calculateAndDisplayRoute(c.destino)"
+            with="10px"
+            shape="round"
+            fill="solid"
+            color="primary"
+          >
+            <ion-icon name="location-outline"></ion-icon>Ver ruta
+          </ion-button>
+          </ion-card-content>
+        </ion-card>
 
-        <ion-item>
+        
+
+        <!--<ion-item>
           <ion-grid fixed>
             <ion-row>
               <ion-col size="12">
@@ -103,7 +114,7 @@
               </ion-col>
             </ion-row>
           </ion-grid>
-        </ion-item>
+        </ion-item>-->
 
 
 

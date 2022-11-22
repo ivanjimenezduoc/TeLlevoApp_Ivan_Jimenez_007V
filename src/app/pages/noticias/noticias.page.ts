@@ -23,11 +23,25 @@ export class NoticiasPage implements OnInit {
 
   }
 
-  mostrarMenu()
-  {
-    this.menuController.open('first');
-  }
+  mostrarMenu(){
+  
+    
+    if (localStorage.getItem('conductor')) {
+              
+ 
+      this.menuController.enable(false,'pasajero');
+      this.menuController.enable(true,'conductor');
+      this.menuController.open('conductor');     
+
+    } else if (localStorage.getItem('pasajero')) {
+        
+    this.menuController.enable(false,'conductor');
+    this.menuController.enable(true,'pasajero');
+    this.menuController.open('pasajero');
+      
+    }
 
 
 
-}
+
+}}

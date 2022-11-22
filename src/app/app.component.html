@@ -1,36 +1,58 @@
 <ion-app>
-  <ion-menu contentId="main" menuId="first" side="end">
+  <ion-menu contentId="main" menuId="pasajero" side="end">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menú</ion-title>
+        <ion-title>Pasajero</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
-      
-          <ion-menu-toggle *ngFor="let c of componentes">
-            
-            <ion-item [routerLink]="c.redirecTo">
-              <ion-icon [name]="c.icon" slot="start" color="primary"></ion-icon>
-              {{ c.name }}
-            </ion-item>
-          </ion-menu-toggle>
-          
-          <ion-menu-toggle>
-       
-            <ion-button
+        <ion-menu-toggle *ngFor="let c of componentes">
+          <ion-item [routerLink]="c.redirecTo">
+            <ion-icon [name]="c.icon" slot="start" color="primary"></ion-icon>
+            {{ c.name }}
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-button
             expand="block"
             fill="clear"
             shape="round"
-            
             routerLink="/login"
           >
             <ion-icon name="log-out-outline"></ion-icon>
             Cerrar Sesion
           </ion-button>
-     
-          </ion-menu-toggle>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
 
+  <ion-menu contentId="main" menuId="conductor" side="end">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Conductor</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle *ngFor="let c of componentes2">
+          <ion-item [routerLink]="c.redirecTo">
+            <ion-icon [name]="c.icon" slot="start" color="primary"></ion-icon>
+            {{ c.name }}
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-button
+            expand="block"
+            fill="clear"
+            shape="round"
+            routerLink="/login"
+          >
+            <ion-icon name="log-out-outline"></ion-icon>
+            Cerrar Sesion
+          </ion-button>
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>

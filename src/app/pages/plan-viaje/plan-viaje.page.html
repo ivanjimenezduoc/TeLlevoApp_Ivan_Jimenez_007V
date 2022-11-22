@@ -10,122 +10,130 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content>
+   <div class="centrar" name="campos" style="padding: 10px">
+    <form [formGroup]="formularioRuta">
 
-  <div class="centrar" name="campos" style="padding: 10px">
     <ion-label position="stacked">Donde vamos?</ion-label>
-    <ion-input
-      class="input-field"
-      style="text-align: center"
-      type="text"
-      placeholder="Ingresa tu Destino"
-    ></ion-input>
-  </div>
+      <ion-input
+        class="input-field"
+        style="text-align: center"
+        type="text"
+        placeholder="Ingresa tu Destino"
+        id="end"
+        formControlName="destino"
+       
+      ></ion-input>
+
+      <ion-button
+        (click)="calculateAndDisplayRoute()"
+        with="5px"
+        shape="round"
+        fill="solid"
+        color="danger"
+        size="small"
+
+      >
+        <ion-icon name="location-outline"></ion-icon> Ver ruta
+      </ion-button>
+
+      <div id="map"></div>
+
+      <div>
 
 
-  <div name="mapa" >
-    <img
-      src="assets/map.jpg"
-      
-      class=" mapa"
-    />
-  </div>
+        <ion-row class="centrar-vertical">
+          <ion-col size="2" class="centrar-vertical">
+           
+            <img src="assets/icon/reloj.png" height="20px" />
+          </ion-col>
 
-  <div>
-      <div name="listado_vehuculos">
-        <ion-list>
-          <ion-item lines="none">
-            <ion-label position="stacked">Vehiculo</ion-label>
-          
-            <ion-select placeholder="Seleccione el vehiculo">
-              <ion-select-option value="apples">Gelly Lc 1.0</ion-select-option>
-              <ion-select-option value="oranges"
-                >Lamborghini Diablo</ion-select-option
-              >
-            </ion-select>
-          </ion-item>
-        </ion-list>
+          <ion-col size="4">
+            <ion-datetime-button
+              style="font-size:15px ;"
+              datetime="datetime"
+            ></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime
+                formControlName="hora"
+                  minuteValues="0,10,20,30,40,50"
+                  presentation="time"
+                  id="datetime"
+                ></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-col>
+
+          <ion-col size="2" class="centrar-vertical">
+        
+            <img src="assets/icon/pasajero.png" height="20px" />
+          </ion-col>
+          <ion-col size="3">
+            <ion-input
+              class="input-number"
+              type="number"
+              value="10"
+              min="1"
+              max="10"
+              formControlName="pasajeros"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
       </div>
-
-      <ion-row class="centrar-vertical">
-        <ion-col size="2" class="centrar-vertical">
-        <!--  <p style="text-align: right">Hora de salida</p>-->
-        <img src="assets/icon/reloj.png" height="30px" />
-        
-        </ion-col>
-  
-        <ion-col size="4">
-          <ion-datetime-button datetime="datetime"></ion-datetime-button>
-          <ion-modal [keepContentsMounted]="true">
-            <ng-template>
-              <ion-datetime
-                minuteValues="0,10,20,30,40,50"
-                presentation="time"
-                id="datetime"
-              ></ion-datetime>
-            </ng-template>
-          </ion-modal>
-        </ion-col>
-  
-  
-        <ion-col size="2" class="centrar-vertical">
-        
-        <!--  <p style="text-align: right">Capacidad</p>-->
-        <img src="assets/icon/pasajero.png" height="30px" />
-  
-        </ion-col>
-        <ion-col size="3" >
-          <ion-input
-            class="input-number "
-            type="number"
-            value="1"
-            min="1"
-            max="10"
-          ></ion-input>
+      <div>
+        <ion-radio-group formControlName="pago">
+          <ion-list-header>
+            <ion-label style="font-size: 20px">Medio de pago</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>
+              <ion-icon name="cash-outline"></ion-icon> Efectivo</ion-label
+            >
+            <ion-radio mode="md" slot="start" value="Efectivo"></ion-radio>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label
+              ><ion-icon name="card-outline"></ion-icon> Tarjeta (Cobro en
+              vehiculo)</ion-label
+            >
+            <ion-radio mode="md" slot="start" value="Tarjeta"></ion-radio>
+          </ion-item>
+    
+          <ion-item>
+            <ion-label
+              ><ion-icon name="swap-horizontal-outline"></ion-icon>
+              Transferencia</ion-label
+            >
+            <ion-radio mode="md" slot="start" value="Transferencia"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </div>
+      <ion-row>
+        <ion-col size="12">
+          <div style="text-align: center">
+            <ion-button
+              (click)="CrearRuta()"
+              with="100px"
+              shape="round"
+              fill="solid"
+              color="primary"
+              size="small"
+            >
+              Solicitar Viaje
+            </ion-button>
+          </div>
         </ion-col>
       </ion-row>
-  
- </div>
 
-    <ion-row>
-      <ion-col size="12">
-       <div style="padding-left:15px ;">
-      <ion-label position="stacked">Observaciones</ion-label>
-      <ion-input type="text" placeholder="Ingresa observaciones"></ion-input>
-    </div> 
-    </ion-col>
-
-
-
-      </ion-row>
-
-    <ion-row>
-      <ion-col size="12">
-        <div style=" text-align: center">
-          <ion-button
-            (click)="onClick()"
-            with="100px"
-            shape="round"
-            fill="solid"
-            color="primary"
-            size="small"
-            routerLink="/ruta-actual"
-          >
-            Crear ruta
-          </ion-button>
-        </div>
-
-      </ion-col>
-    </ion-row>
-
-
-
-
+    </form>
+  </div>
 </ion-content>
-<ion-footer style="height:50px ;">
-  <ion-toolbar >
-    <div name="logo" style="margin-left:5px ;" >
-      <img  src="assets/logo_duoc.png" whith="20px" height="20px" >
+<ion-footer style="height: 50px">
+  <ion-toolbar>
+    <div name="logo" style="margin-left: 5px">
+      <img src="assets/logo_duoc.png" whith="20px" height="20px" />
     </div>
     <ion-title class="pie">Powered by Ivan</ion-title>
   </ion-toolbar>

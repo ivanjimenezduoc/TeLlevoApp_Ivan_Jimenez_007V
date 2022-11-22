@@ -11,62 +11,48 @@
 </ion-header>
 
 <ion-content>
-  <div name="mapa">
-    <img src="assets/map.jpg" class="mapa" />
-  </div>
+  <div id="map"></div>
 
   <div>
     <ion-list>
-      <ion-list-header> Datos Conductor</ion-list-header>
-
       <ion-item>
-        <ion-avatar slot="end">
-          <img src="assets/foto.png" />
-        </ion-avatar>
         <ion-label>
-          <h3>Conductor : Juanito Perez</h3>
-          <h3>Vehiculo :Gelly Lc 1.0</h3>
-          <h3>Patente :HRHY99</h3>
-          <h3>Hora Salida : 22:20</h3>
-          <h3>Color : Rojo Italiano</h3>
+          <ion-row>
+            <ion-col size="2">
+              <img src="assets/ruta.png" />
+            </ion-col>
+            <ion-col size="9"
+              ><h2 style="padding-bottom: 10px">
+                Tu Viaje esta {{estado}}
+              </h2></ion-col
+            >
+          </ion-row>
+
+          <h3>Destino : {{destino}}</h3>
+          <h3>Hora : {{hora | date:'HH:mm'}}</h3>
+          <h3>Medio de pago : {{pago}}</h3>
         </ion-label>
       </ion-item>
+      <ion-item >
+        {{titulo}}
+        {{conductor}}
+        {{tarifa}}
+        </ion-item>
     </ion-list>
   </div>
-
-  <div>
-    <ion-list>
-
-
-      <ion-item>
-        <ion-avatar class="avatar-cuadrado" slot="start">
-          <img src="assets/ruta.png" />
-        </ion-avatar>
-        <ion-label>
-          <h1 style="padding-bottom: 10px">Tu Viaje</h1>
-          <h3>Las Naciones 4569, Maipu</h3>
-          <h3>Tarifa :$ 5000</h3>
-          <ion-label>
-            Medio de pago: Efectivo <ion-icon name="cash-outline"></ion-icon
-          ></ion-label>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
-
 
   <div name="boton aceptar" style="height: 50px">
     <ion-row>
       <ion-col size="12">
         <div style="text-align: center">
           <ion-button
-            (click)="onClick()"
+            (click)="cancelarRuta()"
             with="100px"
             shape="round"
             fill="solid"
             color="danger"
             size="small"
-            routerLink="/buscar-viaje"
+            routerLink="/plan-viaje"
           >
             Cancelar Viaje
           </ion-button>

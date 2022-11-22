@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar class="barramenu">
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarMenu()" color="primary">
+        <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="start">
+      <ion-back-button mode="ios" text="Volver"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="titulo centrar">TeLevoApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <img class="centrar" src="assets/foto.png" whith="80px" height="80px" />
+
+  </ion-row>
+
+  <ion-row>
+    <ion-card>
+     
+        <ion-row>
+          <ion-col style="text-align:center ;"  size=12>
+            <p style="font-size: 15px">Manolo Sepulveda </p>
+            <p style="font-size: 15px">Ingenieria en Informatica</p>
+            <p style="font-size: 15px">Sede Maipu</p>
+          </ion-col>
+        </ion-row>
+        <ion-row class="boton-fila-der">
+          <ion-col size=12>
+          <ion-button
+            (click)="onClick()"
+            with="10px"
+            shape="round"
+            fill="solid"
+            color="primary"
+            size="small"
+            routerLink="/registro"
+          >
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        </ion-row>
+ 
+    </ion-card>
+  </ion-row>
+
+  
+</ion-content>
+
+<ion-footer style="height: 50px">
+  <ion-toolbar>
+    <div name="logo" style="margin-left: 5px">
+      <img src="assets/logo_duoc.png" whith="20px" height="20px" />
+    </div>
+    <ion-title class="pie">Powered by Ivan</ion-title>
+  </ion-toolbar>
+</ion-footer>

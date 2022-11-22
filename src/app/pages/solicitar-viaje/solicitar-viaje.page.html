@@ -11,38 +11,132 @@
 </ion-header>
 
 <ion-content>
-  <div class="centrar" name="campos" style="padding-top: 10px">
-    <ion-label position="stacked">Donde vas?</ion-label>
-    <ion-input
+  <div class="centrar" name="campos" style="padding: 10px">
+    <form [formGroup]="formularioRuta">
+
+      <ion-label position="stacked">Donde vamos?</ion-label>
+
+      
+
+      <ion-input
       class="input-field"
       style="text-align: center"
       type="text"
       placeholder="Ingresa tu Destino"
+      id="end"
+      formControlName="destino"
+      
     ></ion-input>
+
+    <div id="map"></div>
+    
+  
+  </form>
+  </div>
+</ion-content>
+<!--
+  <div class="centrar" name="campos" style="padding: 10px">
+    <form [formGroup]="formularioRuta">
+
+    <ion-label position="stacked">Donde vamos?</ion-label>
+      <ion-input
+        class="input-field"
+        style="text-align: center"
+        type="text"
+        placeholder="Ingresa tu Destino"
+        id="end"
+        formControlName="destino"
+      ></ion-input>
+
+      <ion-button
+        (click)="calculateAndDisplayRoute()"
+        with="5px"
+        shape="round"
+        fill="solid"
+        color="primary"
+      >
+        <ion-icon name="location-outline"></ion-icon> Ver ruta
+      </ion-button>
+
+      <div id="map"></div>
+
+      <div name="listado_vehuculos">
+
+        <ion-row class="centrar-vertical">
+          <ion-col size="2" class="centrar-vertical">
+           
+            <img src="assets/icon/reloj.png" height="30px" />
+          </ion-col>
+
+          <ion-col size="4">
+            <ion-datetime-button
+          
+              datetime="datetime"
+            ></ion-datetime-button>
+            <ion-modal [keepContentsMounted]="true">
+              <ng-template>
+                <ion-datetime
+                formControlName="hora"
+                  minuteValues="0,10,20,30,40,50"
+                  presentation="time"
+
+                  id="datetime"
+                ></ion-datetime>
+              </ng-template>
+            </ion-modal>
+          </ion-col>
+
+          <ion-col size="2" class="centrar-vertical">
+        
+            <img src="assets/icon/pasajero.png" height="30px" />
+          </ion-col>
+          <ion-col size="3">
+            <ion-input
+              class="input-number"
+              type="number"
+              value="1"
+              min="1"
+              max="10"
+              formControlName="pasajeros"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <ion-row>
+        <ion-col size="12">
+          <div style="padding-left: 15px">
+            <ion-label position="stacked">Observaciones</ion-label>
+            <ion-input
+              formControlName="obs"
+              type="text"
+              placeholder="Ingresa observaciones"
+            ></ion-input>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <div style="text-align: center">
+            <ion-button
+              (click)="CrearRuta()"
+              with="100px"
+              shape="round"
+              fill="solid"
+              color="primary"
+              size="small"
+            >
+              Crear ruta
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </form>
   </div>
 
-  <div name="mapa">
-    <img src="assets/map.jpg" class="mapa" />
-  </div>
 
-  <div>
-    <ion-card>
-      <ion-card-content>
-        <ion-label>
-          <h2>Conductor : Juanito Perez</h2>
-          <h3>Destino :Las Naciones 4569, Maipu</h3>
-          <h3>Capacidad disponible : 2</h3>
-          <h3>Hora Salida : 22:20</h3>
-        </ion-label>
-      </ion-card-content>
-    </ion-card>
-  </div>
 
-  <div name="tarifa">
-    <ion-card>
-      <ion-card-content> Tarifa :$ 5000 </ion-card-content>
-    </ion-card>
-  </div>
 
   <div>
     <ion-radio-group>
@@ -92,7 +186,7 @@
         </div>
       </ion-col>
     </ion-row>
-  </div>
+  </div>-->
 
   <ion-footer style="height: 50px">
     <ion-toolbar>
@@ -101,5 +195,5 @@
       </div>
       <ion-title class="pie">Powered by Ivan</ion-title>
     </ion-toolbar>
-  </ion-footer></ion-content
->
+  </ion-footer>
+

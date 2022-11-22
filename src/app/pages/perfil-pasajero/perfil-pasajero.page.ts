@@ -1,16 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
-@Component({
-  selector: 'app-mis-viajes',
-  templateUrl: './mis-viajes.page.html',
-  styleUrls: ['./mis-viajes.page.scss'],
-})
-export class MisViajesPage implements OnInit {
+import { Router } from '@angular/router';
 
-  constructor(private menuController: MenuController) { }
+
+@Component({
+  selector: 'app-perfil-pasajero',
+  templateUrl: './perfil-pasajero.page.html',
+  styleUrls: ['./perfil-pasajero.page.scss'],
+})
+export class PerfilPasajeroPage implements OnInit {
+
+
+  constructor(private menuController: MenuController,private router: Router) { }
 
   ngOnInit() {
    
+  }
+
+  navigate(){
+    this.router.navigate(['/login'])
   }
 
   mostrarMenu(){

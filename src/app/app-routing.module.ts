@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'plan-viaje',
     loadChildren: () => import('./pages/plan-viaje/plan-viaje.module').then( m => m.PlanViajePageModule),
-    canActivate:[ConductorGuard]
+    canActivate:[PasajeroGuard]
   },
   {
     path: 'new-vehiculo',
@@ -83,6 +83,13 @@ const routes: Routes = [
     path: 'noticias',
     loadChildren: () => import('./pages/noticias/noticias.module').then( m => m.NoticiasPageModule)
   },
+  {
+    path: 'perfil-pasajero',
+    loadChildren: () => import('./pages/perfil-pasajero/perfil-pasajero.module').then( m => m.PerfilPasajeroPageModule)
+  },
+  
+
+
 ];
 
 @NgModule({
