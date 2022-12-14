@@ -11,7 +11,8 @@
 </ion-header>
 
 <ion-content>
-  <div id="map2"></div>
+
+  <div id="map5"></div>
 
   <div>
     <ion-list>
@@ -23,27 +24,37 @@
             </ion-col>
             <ion-col size="9"
               ><h2 style="padding-bottom: 10px">
-                Tu Viaje esta {{estado}}
+                Estas en camino
               </h2></ion-col
             >
           </ion-row>
-
           <h3>Destino : {{destino}}</h3>
-          <h3>Hora : {{hora | date:'HH:mm'}}</h3>
+          <h3>Hora Inicio: {{hora | date:'HH:mm'}}</h3>
+          <h3>Conductor : {{conductor}}</h3>       
+          <h3>Tarifa : {{tarifa}}</h3>
           <h3>Medio de pago : {{pago}}</h3>
-        </ion-label>
-      </ion-item>
-      <ion-item >
-        <ion-label>
-        <h3>{{titulo}}</h3>
-        <h3>{{conductor}}</h3>
-        <h3>{{tarifa}}</h3>
-      </ion-label>
+
+          <ion-row style="align-items: center;">
+            <ion-button
+            (click)="cancelarRuta()"
+            with="100px"
+            shape="round"
+            fill="solid"
+            color="danger"
+            size="small"
+            routerLink="/plan-viaje"
+          >
+            Cancelar Viaje
+          </ion-button>
+          </ion-row>
+    </ion-label>
+     
+
         </ion-item>
     </ion-list>
   </div>
 
-  <div name="boton aceptar" style="height: 50px">
+  <!--<div name="boton aceptar" style="height: 50px">
     <ion-row>
       <ion-col size="12">
         <div style="text-align: center">
@@ -61,8 +72,8 @@
         </div>
       </ion-col>
     </ion-row>
-  </div>
-
+  </div>-->
+</ion-content>
   <ion-footer style="height: 50px">
     <ion-toolbar>
       <div name="logo" style="margin-left: 5px">
@@ -70,5 +81,5 @@
       </div>
       <ion-title class="pie">Powered by Ivan</ion-title>
     </ion-toolbar>
-  </ion-footer></ion-content
+  </ion-footer>
 >

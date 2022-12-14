@@ -7,20 +7,20 @@ import { RegistrosserviceService, rutaConductor } from '../../../services/regist
 
 declare const google;
 
-
 @Component({
-  selector: 'app-ruta-actual',
-  templateUrl: './ruta-actual.page.html',
-  styleUrls: ['./ruta-actual.page.scss'],
+  selector: 'app-en-camino-conductor',
+  templateUrl: './en-camino-conductor.page.html',
+  styleUrls: ['./en-camino-conductor.page.scss'],
 })
-export class RutaActualPage implements OnInit {
+export class EnCaminoConductorPage implements OnInit {
+
 
   destino: string = '';
   hora: string = '';
   observacion: string = '';
   titulo: string;
-  pendientes: string;
-  x:boolean;
+  activos :boolean;
+
 
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
@@ -44,20 +44,21 @@ export class RutaActualPage implements OnInit {
 
   ionViewDidEnter(){
     
-    this.buscarPendientes();
-    this.buscarActivos();
+   
+   
 
   }
   ngAfterViewInit() {
   
     this.loadMap();
+    this.buscarActivos();
   }
 
   loadMap() {
 
 
     const map = new google.maps.Map(
-      document.getElementById("map3") as HTMLElement,
+      document.getElementById("map6") as HTMLElement,
       {
         zoom: 14,
         center: this.center
@@ -68,27 +69,31 @@ export class RutaActualPage implements OnInit {
     this.directionsRenderer.setMap(map);
 
     
-
-
-
   }
 
   buscarActivos(){
-
-
+    console.log("buscando activos")
+    this.activos = false;
     this.registroService.getRuta().then(datos => {
       this.ruta = datos.filter(datos  => datos.c_conductor ==  localStorage.getItem('correo_usuario'));
       if (!datos || datos.length == 0) {
         return null;
       }
       for (let obj of this.ruta) {
-        if (obj.estado == 'aceptado') {
-          
-          this.x=true;
+        if (obj.estado == 'iniciado') {
+          console.log("encontrado")
           this.destino = obj.destino;
           this.hora = obj.hora;
-
+          this.activos = true;
         }
+      }
+
+      if (!this.activos){
+
+        console.log("no hay mas")
+        this.navigate('/ruta-actual')
+
+
       }
 
     })
@@ -96,8 +101,6 @@ export class RutaActualPage implements OnInit {
   } 
 
   calculateAndDisplayRoute(destino: string) {
-
-
 
     this.directionsService
       .route({
@@ -111,6 +114,7 @@ export class RutaActualPage implements OnInit {
       })
       .then((response) => {
         this.directionsRenderer.setDirections(response);
+        
       })
       .catch((e) => window.alert("Directions request failed due to " + status));
   }
@@ -120,27 +124,7 @@ export class RutaActualPage implements OnInit {
     
   }
 
-  buscarPendientes() {
-
-    console.log("buscar pensientes en ruta actual")
-    
-    this.registroService.getRuta().then(datos => {
-      this.ruta = datos;
-      var cont = 0;
-      if (!datos || datos.length == 0) {
-        this.pendientes = '0';
-      } else {
-        for (let r of this.ruta) {
-          if (r.estado == 'pendiente') {
-            cont = cont + 1
-          }
-        }
-        this.pendientes = cont.toString();
-       
-      }
-    })
-  }
-
+ 
   mostrarMenu() {
 
     if (localStorage.getItem('conductor')) {
@@ -155,31 +139,6 @@ export class RutaActualPage implements OnInit {
     }
   }
 
-  async cancelarRuta() {
-
-    this.registroService.getRuta().then(datos => {
-      this.ruta = datos.filter(datos  => datos.c_conductor ==  localStorage.getItem('correo_usuario'));
-
-      if (!datos || datos.length == 0) {
-        return null;
-      }
-      for (let obj of this.ruta) {
-
-        if (obj.estado == 'aceptado') {
-
-     
-          this.registroService.cancelAllRuta(obj).then(item => {
-          console.log('Elemento actualizado!')
-          //this.navController.navigateRoot('plan-viaje');
-          
-
-          });
-        }
-      }
-    })
-    this. buscarPendientes();
-  }
-
   async cancelarUnaRuta(usuario:string,conductor:string) {
 
     this.registroService.getRuta().then(datos => {
@@ -190,47 +149,24 @@ export class RutaActualPage implements OnInit {
       }
       for (let obj of this.ruta) {
 
-        if (obj.estado == 'aceptado') {
+        if (obj.estado == 'iniciado') {
 
      
           this.registroService.cancelRuta(obj).then(item => {
           console.log('Elemento actualizado!')
-         
+          this.buscarActivos();
+
+
+
           });
         }
       }
     })
-    this. buscarPendientes();
+
   }
 
 
 
-async iniciarViaje(){
-
-  this.registroService.getRuta().then(datos => {
-    this.ruta = datos.filter(datos  => datos.c_conductor ==  localStorage.getItem('correo_usuario'));
-
-    if (!datos || datos.length == 0) {
-      return null;
-    }
-    for (let obj of this.ruta) {
-
-      if (obj.estado == 'aceptado') {
-
-   
-        this.registroService.iniciarRuta(obj).then(item => {
-        console.log('Elemento actualizado!')
-        this.navigate('/en-camino-conductor')
-        
-
-        });
-      }
-    }
-  })
-
-
-
-}
 
 
 

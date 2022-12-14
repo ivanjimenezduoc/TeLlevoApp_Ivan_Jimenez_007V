@@ -7,19 +7,16 @@ import { Router } from '@angular/router';
 
 declare const google;
 @Component({
-  selector: 'app-viaje-reservado',
-  templateUrl: './viaje-reservado.page.html',
-  styleUrls: ['./viaje-reservado.page.scss'],
+  selector: 'app-en-camino',
+  templateUrl: './en-camino.page.html',
+  styleUrls: ['./en-camino.page.scss'],
 })
-export class ViajeReservadoPage implements OnInit {
+export class EnCaminoPage implements OnInit {
 
   destino :string='';
   hora :string='';
   pago :string='';
-  estado :string='';
-  titulo :string='';
   conductor :string='';
-  calculado : boolean;
   tarifa :string='';
   
    directionsService = new google.maps.DirectionsService();
@@ -38,21 +35,19 @@ export class ViajeReservadoPage implements OnInit {
       ,private navController:NavController
       
       ) { }
- 
-    ngOnInit() {
-      this.loadMap();
-    
+
+  ngOnInit() {
   }
-  ngAfterViewInit(){
-
-     }
-
+  ngAfterViewInit() {
   
-loadMap(){
+    this.loadMap();
+  }
+ 
+  loadMap(){
 
 
     const map = new google.maps.Map(
-       document.getElementById("map2") as HTMLElement,
+       document.getElementById("map5") as HTMLElement,
        {
          zoom: 14,
          center:this.center
@@ -65,21 +60,15 @@ loadMap(){
          return null;
        }
        for (let obj of this.ruta) {
-        if (localStorage.getItem('correo_usuario') == obj.correoUsuario &&  (obj.estado== 'pendiente' ||   obj.estado== 'aceptado') ) {
-          
+        if (localStorage.getItem('correo_usuario') == obj.correoUsuario &&  obj.estado== 'iniciado') {
+           
            this.destino=obj.destino;
            this.hora = obj.hora;
            this.pago = obj.tipo_pago;
-           this.estado = obj.estado;
            this.calculateAndDisplayRoute(obj.destino)
-
-           if (obj.estado== 'pendiente'){
-            this.titulo='Esperando que un conductor acepte tu viaje';
-           }else if (obj.estado== 'aceptado'){
-            this.titulo='Viaje aceptado';
-            this.conductor='Conductor : ' + obj.n_conductor;
-            this.tarifa='Tarifa : $' + obj.valor
-           }
+           this.conductor=obj.n_conductor;
+           this.tarifa=obj.valor
+           
            
            }
           
@@ -110,8 +99,6 @@ loadMap(){
           })
           .then((response) => {
             this.directionsRenderer.setDirections(response);
-            this.calculado = true;
-            
           })
           .catch((e) => window.alert("Directions request failed due to " + status));
       }
@@ -146,14 +133,14 @@ async cancelarRuta(){
       return null;
     }
     for (let obj of this.ruta) {
-      if (localStorage.getItem('correo_usuario') == obj.correoUsuario &&  (obj.estado== 'pendiente' ||   obj.estado== 'aceptado') ) {
+      if (localStorage.getItem('correo_usuario') == obj.correoUsuario &&  obj.estado== 'iniciado') {
       
         obj.estado = 'cancelado';
         this.registroService.cancelRuta(obj).then(item=>{
         console.log('Elemento actualizado!')
         
         this.navController.navigateRoot('plan-viaje');
-       //this.router.navigate(["/plan-viaje"]);
+        this.router.navigate(["/plan-viaje"]);
         //this.navController.pop();
         
         });

@@ -78,13 +78,6 @@ export class AppComponent {
 
 
   
-/*
-logout(){
-
-localStorage.clear();
-
-}*/
-
 
 
 

@@ -93,7 +93,7 @@ export class RegistrosserviceService {
       }
       let newDato: rutaConductor[] = [];
       for (let i of datos){
-        if (i.correoUsuario === dato.correoUsuario && i.destino === dato.destino  &&  (i.estado === 'pendiente' || i.estado === 'aceptado' )){
+        if (i.correoUsuario === dato.correoUsuario && i.destino === dato.destino  &&  (i.estado === 'pendiente' || i.estado === 'aceptado' || i.estado === 'iniciado' )){
           dato.estado='cancelado'
           newDato.push(dato);
         }
@@ -119,6 +119,31 @@ export class RegistrosserviceService {
         if (i.c_conductor === datox.c_conductor  &&  i.estado === 'aceptado' ){
             
           datox.estado='cancelado'
+          newDato.push(datox);
+        }
+        else{
+          newDato.push(i);
+        }
+      }
+      return this.storage.set(ROUTE_KEY, newDato);
+    });
+  }
+
+
+  async iniciarRuta(datox: rutaConductor): Promise<any>{
+    return this.storage.get(ROUTE_KEY).then((datos : rutaConductor[])=>{
+     
+      if (!datos || datos.length == 0){
+        return null;
+      }
+
+
+      let newDato: rutaConductor[] = [];
+      for (let i of datos){
+
+        if (i.c_conductor === datox.c_conductor  &&  i.estado === 'aceptado' ){
+            
+          datox.estado='iniciado'
           newDato.push(datox);
         }
         else{

@@ -50,7 +50,7 @@ export class BuscarViajePage implements OnInit {
 
 
     const map = new google.maps.Map(
-      document.getElementById("map") as HTMLElement,
+      document.getElementById("map4") as HTMLElement,
       {
         zoom: 14,
         center: this.center

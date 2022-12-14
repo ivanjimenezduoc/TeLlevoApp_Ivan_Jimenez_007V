@@ -34,10 +34,11 @@
         size="small"
 
       >
-        <ion-icon name="location-outline"></ion-icon> Ver ruta
+        <ion-icon name="location-outline"></ion-icon> Calcular ruta
       </ion-button>
 
-      <div id="map"></div>
+      <div id="map1"></div>
+      <h3>Tarifa : {{tarifa}}</h3>
 
       <div>
 
@@ -71,6 +72,7 @@
           </ion-col>
           <ion-col size="3">
             <ion-input
+              id="num"
               class="input-number"
               type="number"
               value="10"

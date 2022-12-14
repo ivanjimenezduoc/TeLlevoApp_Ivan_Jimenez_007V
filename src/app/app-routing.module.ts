@@ -25,11 +25,6 @@ const routes: Routes = [
     canActivate:[ConductorGuard]
   },
   {
-    path: 'menu',
-    loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule),
-    
-  },
-  {
     path: 'ruta-actual',
     loadChildren: () => import('./pages/ruta-actual/ruta-actual.module').then( m => m.RutaActualPageModule),
     canActivate:[ConductorGuard]
@@ -70,11 +65,6 @@ const routes: Routes = [
 
   },
   {
-    path: 'menu',
-    loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule),
-
-  },
-  {
     path: 'faq',
     loadChildren: () => import('./pages/faq/faq.module').then( m => m.FaqPageModule),
   
@@ -86,6 +76,14 @@ const routes: Routes = [
   {
     path: 'perfil-pasajero',
     loadChildren: () => import('./pages/perfil-pasajero/perfil-pasajero.module').then( m => m.PerfilPasajeroPageModule)
+  },
+  {
+    path: 'en-camino',
+    loadChildren: () => import('./pages/en-camino/en-camino.module').then( m => m.EnCaminoPageModule)
+  },
+  {
+    path: 'en-camino-conductor',
+    loadChildren: () => import('./pages/en-camino-conductor/en-camino-conductor.module').then( m => m.EnCaminoConductorPageModule)
   },
   
 

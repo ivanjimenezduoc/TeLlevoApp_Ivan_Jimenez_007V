@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController, MenuController } from '@ionic/angular';
 import { RegistrosserviceService, rutaConductor } from '../../../services/registrosservice.service';
 import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 import {
   FormGroup, FormControl, Validators, FormBuilder
 } from '@angular/forms';
 declare const google;
-
 
 
 @Component({
@@ -22,17 +23,19 @@ export class PlanViajePage implements OnInit {
   ruta: rutaConductor[] = [];
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
-
+  tarifa : string;
   center: any = {
     lat: -33.5112456,
     lng: -70.7526532,
   }
 
 
+
   constructor(private menuController: MenuController,
     private alertController: AlertController,
     private registroService: RegistrosserviceService,
     private navController :NavController,
+    private router: Router,
     private fb: FormBuilder) {
       this.formularioRuta = this.fb.group({
         'destino': new FormControl("", Validators.required),
@@ -58,16 +61,19 @@ export class PlanViajePage implements OnInit {
   }
   loadMap() {
 
+    
 
     const map = new google.maps.Map(
-      document.getElementById("map") as HTMLElement,
+      document.getElementById("map1") as HTMLElement,
       {
         zoom: 14,
         center: this.center
       }
     );
 
-    console.log('renderizando map')
+    console.log(map);
+    console.log('Llamando mapa map');
+
     this.directionsRenderer.setMap(map);
     console.log('renderizando map fin')
   }
@@ -84,7 +90,11 @@ export class PlanViajePage implements OnInit {
         travelMode: google.maps.TravelMode.DRIVING,
       })
       .then((response) => {
+        //console.log(response);
         this.directionsRenderer.setDirections(response);
+        //console.log(response.routes[0].legs[0].distance.value);
+  
+        this.tarifa = (Math.trunc((response.routes[0].legs[0].distance.value * 900)/1000)).toString();
       })
       .catch((e) =>  this.alertX('Error', 'Direccion mal ingresada') );
   }
@@ -110,10 +120,11 @@ export class PlanViajePage implements OnInit {
           this.newRuta.hora = form.hora;
           this.newRuta.fecha = hoy.toLocaleDateString();;
           this.newRuta.estado = 'pendiente';
+          this.newRuta.valor = this.tarifa;
           /*this.newRuta.id = '';
           this.newRuta.n_conductor = '';
           this.newRuta.c_conductor = '';
-          this.newRuta.valor = '';
+          
           this.newRuta.vehiculo = '';*/
 
       
@@ -122,6 +133,9 @@ export class PlanViajePage implements OnInit {
             console.log('Ruta Creada!');
             this.navController.navigateRoot('viaje-reservado');
             
+            //this.router.navigate(["/viaje-reservado"]);
+
+            //this.navController.pop();
           });
           
         }

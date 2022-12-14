@@ -66,22 +66,25 @@ export class LoginPage implements OnInit {
 
                 
                 for (let r of this.ruta) {
-                  //console.log(r.correoUsuario + ' == ' +  localStorage.getItem('correo_usuario') +' && ('+ (r.estado  + ' == pendiente')+ ' || ' + r.estado  + ' ==  aceptado)')
+                  
                   if (r.correoUsuario == localStorage.getItem('correo_usuario') && ((r.estado == 'pendiente') || r.estado=='aceptado')) {
-                   // console.log('encontrado')
-                    x = 1;
-                    
+                  
+                    x = 1;                  
 
-                  }
-
+                  } else if (r.correoUsuario == localStorage.getItem('correo_usuario') && r.estado == 'iniciado') {
+                  
+                    x = 2;
+                  
+                  }     
                 }
 
                 //console.log(x);
 
                 if (x == 1) {
                   this.navController.navigateRoot('viaje-reservado');
-                } else {
-                 
+                } else  if (x == 2) {
+                  this.navController.navigateRoot('en-camino');
+                } else {  
                   this.navController.navigateRoot('plan-viaje');
                 }
 
@@ -89,7 +92,40 @@ export class LoginPage implements OnInit {
             } else if (localStorage.getItem('conductor')) {
 
               localStorage.setItem('tipo_usuario', 'Conductor');
-              this.navController.navigateRoot('ruta-actual');
+              //this.navController.navigateRoot('ruta-actual');
+              var x = 0;
+
+
+              this.registroService.getRuta().then(datos => {
+                this.ruta = datos;
+                if (!datos || datos.length == 0) {
+                  this.navController.navigateRoot('ruta-actual');
+                }
+
+                
+                for (let r of this.ruta) {
+                  
+                  if (r.c_conductor == localStorage.getItem('correo_usuario') && r.estado == 'iniciado') {
+                  
+                    x = 1;                  
+                 
+                  }     
+                  
+                }
+
+                //console.log(x);
+
+                if (x == 1) {
+                  this.navController.navigateRoot('en-camino-conductor');
+                } else {  
+                  this.navController.navigateRoot('ruta-actual');
+                }
+
+              })
+
+
+
+
 
             }
 
